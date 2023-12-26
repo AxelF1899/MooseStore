@@ -1,0 +1,83 @@
+body.dark-mode {
+    background-color: #333; 
+    color: #fff; 
+}
+.card.dark-mode {
+    background-color: #434343; 
+    color: #fff; 
+}
+
+.navbar-brand {
+    font-style: italic;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+.logo{
+    width: 40px;
+}
+.form-check-label{
+    color: #fff;
+}
+.card-img-top {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+.card{
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover{
+    transform: scale(1.05); 
+    transition: transform 0.3s ease-in-out; 
+}
+
+.btn-primary{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-check-input {
+    position: absolute;
+    left: -9999px; 
+}
+
+.form-check-label {
+    position: absolute;
+    top: 100px;
+    right: 60px;
+    z-index: 1000;
+    width: 24px; 
+    height: 24px;
+    background-color: #2b00ff00; 
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.form-check-label::before {
+    content: '\1F31B';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #9caae2; 
+    transition: color 0.3s ease-in-out;
+}
+
+.dark-mode .form-check-label::before {
+    color: #d5e74d; 
+    content: '\2600';
+}
+
+#notify{
+    position: absolute;
+    bottom: 100px;
+    right: 60px;
+    z-index: 1000;
+    width: 550px; 
+}
