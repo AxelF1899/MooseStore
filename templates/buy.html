@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Buy a Product{% endblock %}
+
+{% block content %}
+  <h2>Buy a Product</h2>
+  <p>Details about the product to be bought...</p>
+  <a href="{{ url_for('buy_product', product_id=product.id) }}" class="btn btn-primary">Buy Now</a>
+{% endblock %}

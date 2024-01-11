@@ -41,6 +41,21 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <ul class="navbar-nav ms-auto">
+
+            {% if current_user.is_authenticated and request.endpoint == 'home' %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Menu
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ url_for('sell') }}">Vender producto</a>
+              <a class="dropdown-item" href="#">Información personal</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Cerrar sesión</a>
+            </div>
+          </li>
+        {% endif %}
+
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
@@ -79,27 +94,28 @@
             {% endfor %}
             <script>
               document.addEventListener('DOMContentLoaded', function () {
-                var alertElements = document.querySelectorAll('.alert');
-                alertElements.forEach(function (alert) {
-                  setTimeout(function () {
+                setTimeout(function () {
+                  var alertElements = document.querySelectorAll('.alert');
+                  alertElements.forEach(function (alert) {
                     alert.classList.add('fade');
                     setTimeout(function () {
                       alert.remove();
                     }, 1000);
-                  }, 4500); // milisegundos
-                });
+                  });
+                }, 4500); // milisegundos
               });
             </script>
           {% endif %}
         {% endwith %}
       </div>
+      
     </div>
     
 
     {%block content%}{%endblock%}
 
     <script>
-      // Función para establecer el estado del modo oscuro
+      
       function setDarkMode(isDarkMode) {
         document.body.classList.toggle("dark-mode", isDarkMode);
         const cards = document.querySelectorAll(".card");

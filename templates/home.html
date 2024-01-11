@@ -3,24 +3,28 @@
 
 {%block content%}
 
-<div class="container my-4">
-    <h2>Our products</h2>
-    <div class="container my-5 mx-3">
-        <ul class="list-unstyled d-flex">
-            <li>
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ url_for('static', filename='icons/alce.png')}}" class="card-img-top" alt="Product Image">
-                    <div class="card-body">
-                      <h5 class="card-title">Product name</h5>
-                      <p class="card-text">Description of the product.</p>
-                      <h6 class="card-text my-4">Price: $900</h6>
-                      <a href="#" class="btn btn-primary my-3 text-center">View</a>
-                    </div>
-                  </div>
-            </li>
-        </ul>
+<div class="container mt-4">
+    <h2>Available products</h2>
+    <div class="row">
+      {% for product in products %}
+        <div class="col-md-4 mb-4 my-5">
+          <div class="card">
+            <img src="{{ url_for('static', filename='icons/alce.png') }}" class="card-img-top" alt="{{ product.title }}">
+            <div class="card-body mx-4">
+              <h5 class="card-title">{{ product.title_product }}</h5>
+              <p class="card-text">{{ product.description_product }}</p>
+              <p class="card-text">${{ product.price }}</p>
+            </div>
+            <form method="post" action="{{ url_for('buy') }}">
+              <input type="hidden" name="product_id" value="{{ product.ID_product }}">
+              <div class="d-flex align-items-center">
+                <button type="submit" class="btn btn-primary w-100 my-3 mx-4">Buy</button>
+              </div>              
+            </form>
+          </div>
+        </div>
+      {% endfor %}
     </div>
-</div>
-
+  </div>
 
 {%endblock%}

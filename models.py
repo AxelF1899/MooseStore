@@ -5,11 +5,14 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 db = SQLAlchemy()
 
 class Product(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    image = db.Column(db.LargeBinary, nullable=False)
-    title = db.Column(db.String(80), nullable=False)
-    description = db.Column(db.Text, nullable=False)
+    ID_product = db.Column(db.Integer, primary_key=True)
+    img_product = db.Column(db.String(99), nullable=True, default='icons/alce.png')
+    title_product = db.Column(db.String(80), nullable=False)
+    description_product = db.Column(db.Text, nullable=False)
     price = db.Column(db.Float, nullable=False)
+    #FK
+    user_id = db.Column(db.Integer, db.ForeignKey('user.ID_user'), nullable=False)
+    user = db.relationship('User', backref=db.backref('products', lazy=True))
 
 class User(db.Model, UserMixin):
     ID_user = db.Column(db.Integer, primary_key=True)
@@ -20,4 +23,7 @@ class User(db.Model, UserMixin):
     user_password = db.Column(db.String(128), nullable=False)
 
     def check_password(self, password):
-        return check_password_hash(self.user_password, password)
+        return self.user_password == password  ####
+    def get_id(self):
+        return str(self.ID_user)
+
