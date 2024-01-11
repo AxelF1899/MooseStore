@@ -1,2 +1,3 @@
 # MooseStore
-A project made just for fun
+Make sure you have installed all libraries before running
+A project made for trying to approve web development at the university
